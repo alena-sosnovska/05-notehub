@@ -4,7 +4,6 @@ import type { NewNote, Note } from "../types/note";
 export interface NoteResponse {
   notes: Note[];
   totalPages: number;
-  page: number;
 }
 
 axios.defaults.baseURL = `https://notehub-public.goit.study/api`
@@ -13,7 +12,7 @@ export const fetchNotes = async (searchText: string, page: number, perPage: numb
     const response = await axios.get<NoteResponse>("/notes", {
         params: {
           search: searchText,
-          page,
+          page: page,
           perPage: perPage
         },
 
